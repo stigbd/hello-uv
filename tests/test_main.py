@@ -21,4 +21,4 @@ def test_head_root() -> None:
     assert response.status_code == status.HTTP_200_OK
     assert "content-type" not in response.headers
     assert response.headers["content-length"] == "0"
-    assert response.text is ""
+    assert response.text == ""
