@@ -39,6 +39,14 @@ As far as I know, at the moment there is no way to run all of the above commands
 % uv run fastapi dev
 ```
 
+## Useful uv commands
+
+```zsh
+% uv --help
+% uv self update # updates uv to the latest version
+% uv init && uv add -r requirements.txt # initializes a new project and installs dependencies from requirements.txt
+```
+
 ## References
 
 - [uv](https://docs.astral.sh/uv)
