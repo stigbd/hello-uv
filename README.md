@@ -31,6 +31,17 @@ Observe the relevant configurations in pyproject.toml.
 % uv run pytest
 ```
 
+### Dependency checker
+
+To check for unused or missing dependencies, I use [deptry](https://deptry.com/):
+
+```zsh
+% uv add deptry --dev
+% uv run deptry .
+```
+
+### Task runner
+
 As far as I know, at the moment there is no way to run all of the above commands in one go. But see <https://github.com/astral-sh/uv/issues/5903> for a discussion on this.
 Until this is resolved, I have used [Poe the Poet](https://github.com/nat-n/poethepoet)
 
@@ -46,9 +57,11 @@ fmt = "uv run ruff format"
 lint = "uv run ruff check --fix"
 pyright = "uv run pyright"
 test = "uv run pytest"
+check-deps = "uv run deptry ."
 release = [
     "lint",
     "pyright",
+    "check-deps",
     "test",
 ]
 ```
