@@ -8,6 +8,7 @@ dependencies = ["fastapi[standard]>=0.115.3"]
 
 [tool.uv]
 dev-dependencies = [
+    "poethepoet>=0.29.0",
     "pyright>=1.1.386",
     "pytest-cov>=5.0.0",
     "pytest>=8.3.3",
@@ -56,3 +57,10 @@ omit = ["tests/*"]
 [tool.coverage.report]
 fail_under = 100
 show_missing = true
+
+[tool.poe.tasks]
+fmt = "uv run ruff format"
+lint = "uv run ruff check --fix"
+pyright = "uv run pyright"
+test = "uv run pytest"
+release = ["lint", "pyright", "test"]
