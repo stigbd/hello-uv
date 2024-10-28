@@ -4,10 +4,13 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = ["fastapi[standard]>=0.115.3"]
+dependencies = [
+    "fastapi[standard]>=0.115.3",
+]
 
 [tool.uv]
 dev-dependencies = [
+    "deptry>=0.20.0",
     "poethepoet>=0.29.0",
     "pyright>=1.1.386",
     "pytest-cov>=5.0.0",
@@ -63,4 +66,5 @@ fmt = "uv run ruff format"
 lint = "uv run ruff check --fix"
 pyright = "uv run pyright"
 test = "uv run pytest"
-release = ["lint", "pyright", "test"]
+check-deps = "uv run deptry ."
+release = ["lint", "pyright", "check-deps", "test"]
