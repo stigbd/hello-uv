@@ -27,10 +27,37 @@ Observe the relevant configurations in pyproject.toml.
 ```zsh
 % uv run ruff format
 % uv run ruff check --fix
+% uv run pyright
 % uv run pytest
 ```
 
 As far as I know, at the moment there is no way to run all of the above commands in one go. But see <https://github.com/astral-sh/uv/issues/5903> for a discussion on this.
+Until this is resolved, I have used [Poe the Poet](https://github.com/nat-n/poethepoet)
+
+```zsh
+% uv add poethepoet --dev
+```
+
+In `pyproject.toml` I have added the following:
+
+```toml
+[tool.poe.tasks]
+fmt = "uv run ruff format"
+lint = "uv run ruff check --fix"
+pyright = "uv run pyright"
+test = "uv run pytest"
+release = [
+    "lint",
+    "pyright",
+    "test",
+]
+```
+
+To run all of the above commands in one go, I can now use the following command:
+
+```zsh
+% uv run poe release
+```
 
 ## Add FastAPI
 
@@ -38,6 +65,10 @@ As far as I know, at the moment there is no way to run all of the above commands
 % uv add fastapi --extra standard
 % uv run fastapi dev
 ```
+
+## Debug
+
+To debug the application, you can add `breakpoint()` in the code and run the application. This method shold also work when running tests.
 
 ## Useful uv commands
 
