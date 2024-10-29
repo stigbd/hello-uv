@@ -74,14 +74,44 @@ To run all of the above commands in one go, I can now use the following command:
 
 ## Add FastAPI
 
+Run in development mode:
+
 ```zsh
 % uv add fastapi --extra standard
 % uv run fastapi dev
 ```
 
+Run with Uvicorn:
+
+```zsh
+% uv run uvicorn app:app
+```
+
+Build and run the docker image:
+
+```zsh
+% docker build -t hello-uv .
+% docker run --name hello-uv -d -p 8080:8080 hello-uv
+```
+
+Stop the docker container:
+
+```zsh
+% docker stop hello-uv
+```
+
+Build and run with docker compose:
+
+```zsh
+% docker compose up --build -d
+% docker compose logs -f
+% docker compose down
+```
+
 ## Debug
 
-To debug the application, you can add `breakpoint()` in the code and run the application. This method shold also work when running tests.
+To debug the application, you can add `breakpoint()` in the code and run the application.
+This method shold also work when running tests. In the latter scenario, you need to set `--capture=no` in the pytest command.
 
 ## Useful uv commands
 
