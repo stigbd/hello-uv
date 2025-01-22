@@ -15,6 +15,7 @@ dev-dependencies = [
     "pytest-docker>=3.1.1",
     "pytest>=8.3.3",
     "ruff>=0.7.0",
+    "pip-audit>=2.7.3",
 ]
 
 [tool.ruff.lint]
@@ -63,6 +64,7 @@ fmt = "uv run ruff format"
 lint = "uv run ruff check --fix"
 pyright = "uv run pyright"
 check-deps = "uv run deptry ."
+audit = "uv run pip-audit"
 fast-tests = "uv run pytest tests/fast -s --cov --cov-report=term-missing --cov-report=html"
 slow-tests = "uv run pytest tests/slow"
-release = ["lint", "pyright", "check-deps", "fast-tests", "slow-tests"]
+release = ["lint", "pyright", "check-deps", "audit", "fast-tests", "slow-tests"]
