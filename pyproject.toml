@@ -20,22 +20,13 @@ dev = [
 
 [tool.ruff.lint]
 select = ["ALL"]
-# and then manually ignore annoying ones:
-ignore = [
-    #     "ANN401", # Any should be allowed
-    "D211",
-    "D213",
-    "COM812",
-    "D203",
-    "ISC001",
-]
+# and then manually ignore incomatible rules:
+ignore = ["D211", "D213"]
 [tool.ruff.lint.per-file-ignores]
 "tests/**/*.py" = [
-    # at least this three should be fine in tests:
+    # at least theese two should be fine in tests:
     "S101",   # asserts allowed in tests...
     "ANN401", # Any should be allowed
-    #     "ARG",  # Unused function args -> fixtures nevertheless are functionally relevant...
-    #     "FBT",  # Don't care about booleans as positional arguments in tests, e.g. via @pytest.mark.parametrize()
 ]
 
 [tool.ruff.lint.isort]
