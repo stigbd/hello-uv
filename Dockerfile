@@ -11,7 +11,7 @@ ADD . /app
 
 # Install the application dependencies.
 WORKDIR /app
-RUN uv sync --frozen
+RUN uv sync --frozen --no-dev
 
 # Expose the application port.
 EXPOSE 8080
