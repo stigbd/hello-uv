@@ -21,6 +21,9 @@ dev = [
     "ty>=0.0.1a26",
 ]
 
+[tool.uv]
+required-version = "==0.9.8"
+
 [tool.ruff.lint]
 select = ["ALL"]
 # and then manually ignore incomatible rules:
