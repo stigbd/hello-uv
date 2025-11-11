@@ -85,13 +85,13 @@ Run in development mode:
 
 ```zsh
 % uv add fastapi --extra standard
-% uv run fastapi dev
+% uv run fastapi dev --port 8080
 ```
 
 Run with Uvicorn:
 
 ```zsh
-% uv run uvicorn app:app
+% uv run uvicorn app:app  --port 8080 --reload
 ```
 
 Build and run the docker image:
@@ -114,6 +114,10 @@ Build and run with docker compose:
 % docker compose logs -f
 % docker compose down
 ```
+
+## Api docs
+
+The api docs are available in Swagger or ReDoc at <http://localhost:8080/docs> or <http://localhost:8080/redoc>.
 
 ## Debug
 
