@@ -13,11 +13,12 @@ This project was created using the following commands:
 Hello world from hello.py!
 ```
 
-## Install and run formatter, linter, type checker, and test runner
+## Install and run formatter, linter, type checker, dependency checker, vulnerability checker, and test runner
 
 ```zsh
 % uv add ruff --dev
-% uv add pyright --dev
+% uv add ty --dev
+% uv add pip-audit --dev
 % uv add pytest --dev
 % uv add pytest-cov --dev
 ```
@@ -27,7 +28,7 @@ Observe the relevant configurations in pyproject.toml.
 ```zsh
 % uv run ruff format
 % uv run ruff check --fix
-% uv run pyright
+% uv run ty check .
 % uv run pytest
 ```
 
@@ -38,6 +39,15 @@ To check for unused or missing dependencies, I use [deptry](https://deptry.com/)
 ```zsh
 % uv add deptry --dev
 % uv run deptry .
+```
+
+### Vulnerability checker
+
+To check for known vulnerabilities in the dependencies, I use [pip-audit](https://pypi.org/project/pip-audit/):
+
+```zsh
+% uv add pip-audit --dev
+% uv run pip-audit .
 ```
 
 ### Task runner
@@ -55,15 +65,12 @@ In `pyproject.toml` I have added the following:
 [tool.poe.tasks]
 fmt = "uv run ruff format"
 lint = "uv run ruff check --fix"
-pyright = "uv run pyright"
-test = "uv run pytest"
+check-types = "uv run ty check ."
 check-deps = "uv run deptry ."
-release = [
-    "lint",
-    "pyright",
-    "check-deps",
-    "test",
-]
+audit = "uv run pip-audit ."
+fast-tests = "uv run pytest tests/fast -s --cov --cov-report=term-missing --cov-report=html"
+slow-tests = "uv run pytest tests/slow"
+release = ["lint", "pyright", "check-deps", "audit", "fast-tests", "slow-tests"]
 ```
 
 To run all of the above commands in one go, I can now use the following command:
