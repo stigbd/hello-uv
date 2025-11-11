@@ -22,7 +22,7 @@ async def test_get_root() -> None:
     ) as ac:
         response = await ac.get("/")
     assert response.status_code == status.HTTP_200_OK
-    assert response.json() == {"message": "Hello World!"}
+    assert response.json() == {"message": "Hello, World!"}
 
 
 @pytest.mark.anyio

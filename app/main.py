@@ -1,14 +1,21 @@
 """Main module for the FastAPI application."""
 
 from fastapi import FastAPI, Response
+from pydantic import BaseModel
 
 app = FastAPI()
 
 
+class Greeting(BaseModel):
+    """A simple greeting class."""
+
+    message: str
+
+
 @app.get("/")
-async def root() -> dict[str, str]:
+async def root() -> Greeting:
     """Return a simple message."""
-    return {"message": "Hello World!"}
+    return Greeting(message="Hello, World!")
 
 
 @app.head("/")

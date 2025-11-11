@@ -56,7 +56,7 @@ async def test_get_root(http_service: str) -> None:
     assert response.headers["Content-type"] == "application/json"
 
     body = response.json()
-    assert body["message"] == "Hello World!"
+    assert body["message"] == "Hello, World!"
 
 
 @pytest.mark.anyio
