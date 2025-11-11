@@ -3,7 +3,7 @@ name = "hello-uv"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.14"
 dependencies = ["fastapi[standard]>=0.115.3"]
 
 [dependency-groups]
@@ -21,7 +21,7 @@ dev = [
 [tool.ruff.lint]
 select = ["ALL"]
 # and then manually ignore incomatible rules:
-ignore = ["D211", "D213"]
+ignore = ["COM812", "D203", "D211", "D213"]
 [tool.ruff.lint.per-file-ignores]
 "tests/**/*.py" = [
     # at least theese two should be fine in tests:

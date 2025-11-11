@@ -17,7 +17,8 @@ def anyio_backend() -> str:
 async def test_get_root() -> None:
     """Should return 200 and a json body."""
     async with AsyncClient(
-        transport=ASGITransport(app=app), base_url="http://test",
+        transport=ASGITransport(app=app),
+        base_url="http://test",
     ) as ac:
         response = await ac.get("/")
     assert response.status_code == status.HTTP_200_OK
@@ -28,7 +29,8 @@ async def test_get_root() -> None:
 async def test_head_root() -> None:
     """Should return 200 and an empty body."""
     async with AsyncClient(
-        transport=ASGITransport(app=app), base_url="http://test",
+        transport=ASGITransport(app=app),
+        base_url="http://test",
     ) as ac:
         response = await ac.head("/")
     assert response.status_code == status.HTTP_200_OK

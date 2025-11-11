@@ -27,7 +27,9 @@ def http_service(docker_ip: str, docker_services: Any) -> str:
     port = docker_services.port_for("hello-uv", 8080)
     url = f"http://{docker_ip}:{port}"
     docker_services.wait_until_responsive(
-        timeout=30.0, pause=0.1, check=lambda: is_responsive(url),
+        timeout=30.0,
+        pause=0.1,
+        check=lambda: is_responsive(url),
     )
     return url
 
