@@ -135,4 +135,11 @@ This method shold also work when running tests. In the latter scenario, you need
 ## References
 
 - [uv](https://docs.astral.sh/uv)
+- [ruff](https://docs.astral.sh/ruff)
+- [ty](https://docs.astral.sh/ty)
+- [deptry](https://deptry.com/)
+- [pip-audit](https://pypi.org/project/pip-audit/)
+- [pytest](https://docs.pytest.org)
+- [poethepoet](https://pypi.org/project/poethepoet)
 - [fastapi](https://fastapi.tiangolo.com/tutorial/bigger-applications/)
+- [pydantic](https://pydantic.dev)
