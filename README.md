@@ -98,10 +98,10 @@ Build and run the docker image:
 
 ```zsh
 % docker build -t hello-uv .
-% docker run --name hello-uv -d -p 8080:8080 hello-uv
+% docker run --rm --name hello-uv -d -p 8080:8080 hello-uv
 ```
 
-Stop the docker container:
+Stop (and remove) the docker container:
 
 ```zsh
 % docker stop hello-uv
